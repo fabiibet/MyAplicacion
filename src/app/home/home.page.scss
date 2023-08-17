@@ -25,3 +25,14 @@
 #container a {
   text-decoration: none;
 }
+
+/* Estilos para el footer */
+ion-footer {
+  ion-toolbar {
+    background-color: #ebe8e8; /* Color de fondo gris */
+    text-align: left;
+    font-size: 14px;
+    padding: 10px 0;
+    color: #000000;
+  }
+}

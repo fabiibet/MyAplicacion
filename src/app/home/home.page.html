@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      HOME
+      SkeletonAPP
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,9 +14,40 @@
   </ion-header>
 
   <div id="container">
-    <strong>Ya tienes cuenta? Ingresa : </strong>
-    <ion-button [routerLink]="'/login'" >Inicio de sesion</ion-button>
-    <strong>No tienes una cuenta?</strong>
-    <ion-button [routerLink]="'/registro'" >Registrate</ion-button>
+    <strong>Bienvenid@!!! </strong>
+    <h5>Usuario:  {{ usuario }}</h5>
+    <h1>Información Adicional </h1>
+
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="nombre" placeholder="Ingrese su nombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input [(ngModel)]="apellido" placeholder="Ingrese su apellido"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nivel de educación</ion-label>
+        <ion-select [(ngModel)]="nivelEducacion">
+          <ion-select-option value="Primaria">Primaria</ion-select-option>
+          <ion-select-option value="Secundaria">Secundaria</ion-select-option>
+          <ion-select-option value="Universidad">Universidad</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Fecha de nacimiento</ion-label>
+        <ion-input [(ngModel)]="fechaNacimiento" type="date"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" (click)="limpiarCampos()">Limpiar</ion-button>
+    <ion-button expand="full" (click)="mostrarInformacion()">Mostrar</ion-button>
+    <ion-button expand="full" (click)="cerrarSesion()">Cerrar sesión</ion-button>
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+    <ion-title>App desarrollada por Fabiola Betancourt</ion-title>
+  </ion-toolbar>
+</ion-footer>
