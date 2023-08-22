@@ -36,3 +36,25 @@ ion-footer {
     color: #000000;
   }
 }
+/* Animacion*/
+
+.title-animation {
+  animation: slideOpacity 5s infinite;
+}
+
+@keyframes slideOpacity {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  25%, 75% {
+    transform: translateX(50%);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
