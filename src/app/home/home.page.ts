@@ -36,22 +36,22 @@ export class HomePage {
     this.nivelEducacion = '';
     this.fechaNacimiento = '';
 
-    this.animateInputFields();
+    this.playAnimation('nombre-input');
+    this.playAnimation('apellido-input');
+    
   }
 
-  animateInputFields() {
-    const inputNombre = document.querySelector('.nombre input') as HTMLElement;
-    const inputApellido = document.querySelector('.apellido input') as HTMLElement;
+  async playAnimation(inputId: string) {
+    const inputElement = document.getElementById(inputId);
 
-    if (inputNombre && inputApellido) {
+    if (inputElement) {
       const animation = this.animationCtrl.create()
-        .addElement(inputNombre)
-        .addElement(inputApellido)
-        .duration(1000)
+        .addElement(inputElement)
+        .duration(10000)
         .iterations(1)
-        .fromTo('transform', 'translateX(0)', 'translateX(100%)')
-        .play();
-    }
+        .fromTo('transform', 'translateX(0)', 'translateX(100%)');
+    await animation.play();
+  }
   }
 
   async mostrarInformacion() {
