@@ -15,7 +15,7 @@ export class HomePage {
   nombre: string = '';
   apellido: string = '';
   nivelEducacion: string = '';
-  fechaNacimiento: string = '';
+  seleccionFecha : Date | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,11 +34,17 @@ export class HomePage {
     this.nombre = '';
     this.apellido = '';
     this.nivelEducacion = '';
-    this.fechaNacimiento = '';
+    this.seleccionFecha = null;
+    
+  }
+
+  async iniciarAnimacion() {
 
     this.playAnimation('nombre-input');
     this.playAnimation('apellido-input');
-    
+    await this.esperarUnSegundo()
+    this.limpiarCampos()
+
   }
 
   async playAnimation(inputId: string) {
@@ -47,9 +53,14 @@ export class HomePage {
     if (inputElement) {
       const animation = this.animationCtrl.create()
         .addElement(inputElement)
-        .duration(10000)
+        .duration(1000)
         .iterations(1)
-        .fromTo('transform', 'translateX(0)', 'translateX(100%)');
+        .keyframes([
+          { offset: 0, transform: 'translateX(0px)' },
+          { offset: 0.33, transform: 'translateX(500px)' }, 
+          { offset: 0.66, transform: 'translateX(-10px)' }, 
+          { offset: 1, transform: 'translateX(0px)' },
+        ]);
     await animation.play();
   }
   }
@@ -87,6 +98,14 @@ export class HomePage {
       this.animation.play();
     }
   }
+
+  esperarUnSegundo(): Promise<void> {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve();
+        }, 200); 
+    });
+}
 
   ionViewDidEnter() {
     this.applyTitleAnimation();
